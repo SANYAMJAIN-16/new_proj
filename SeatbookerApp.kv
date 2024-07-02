@@ -1,0 +1,861 @@
+ScreenManager:
+        Login_scr:
+        Home_scr:
+        Hall_selection:
+        Seat_selection1:
+<Login_scr>:
+        name:"login"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDLabel:
+                text:"WELCOME"
+                color:"#008080"
+                halign:"center"
+                pos_hint:{'center_y':0.8}
+                font_size:"48dp"
+        MDTextField:
+                id:username
+                hint_text:"Username"
+                text_color:"Blue"
+                helper_text:"expample@tmu.ac.in"
+                helper_text_mode:"on_focus"
+                icon_right:"account"
+                helper_text_size:20
+                icon_right_color:"#FFA500"
+                pos_hint:{'center_x':0.5,'center_y':0.645}
+                size_hint_x:None
+                width:500
+                font_size:"25dp"
+                line_color_normal:"#FFFF00"
+                line_color_focus:"#FFA500"
+                multiline:False
+                mode:"rectangle"
+                on_text:self.text = self.text.replace(" ","")
+                write_tab:False
+
+
+        MDTextField:
+                id:passwd
+                hint_text:"Password"
+                helper_text_mode:"on_focus"
+                icon_right:"eye-off"
+                password:True
+                pos_hint:{'center_x':0.5,'center_y':0.5}
+                size_hint_x:None
+                width:500
+                font_size:"25dp"
+                line_color_normal:"#FFFF00"
+                line_color_focus:"#FFA500"
+                mode:"rectangle"
+                multiline:False
+                on_text:self.text = self.text.replace(" ","")
+                write_tab:False
+
+        BoxLayout:
+                orientation:"horizontal"
+                spacing:"5dp"
+
+                MDCheckbox:
+                        id:cb
+                        size_hint:None, None
+                        width:"30dp"
+                        height:"30dp"
+                        pos_hint:{'center_x':0.3,'center_y':0.4}
+                        on_press:
+                                passwd.password=False if passwd.password == True else True
+                                passwd.icon_right = "eye" if passwd.icon_right == "eye-off" else "eye-off"
+
+                MDLabel:
+                        text: "[ref=Show Password]Show Password[/ref]"
+                        markup:True
+                        halign:"left"
+                        pos_hint:{'center_y':0.4}
+                        font_color:"#FFA500"
+                        on_ref_press:
+                                cb.active =False if cb.active==True else True
+                                passwd.password=False if passwd.password == True else True
+                                passwd.icon_right = "eye" if passwd.icon_right == "eye-off" else "eye-off"
+
+        MDRectangleFlatButton:
+                text : "SIGN IN"
+                pos_hint:{'center_x':0.6,'center_y':0.3}
+                md_bg_color:"#A52A2A"
+                font_size:"22dp"
+                on_press:app.get_data()
+
+<Home_scr>:
+        name:"home"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+
+<Hall_selection>:
+        name:"hall_selection"
+
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDBoxLayout:
+                orientation:"vertical"
+                MDTopAppBar:
+                        title:"Number of Halls"
+                        elevation:3
+
+                MDScrollView:
+                        pos_hint:{"center_x":0.55,"center_y":0.3}
+                        MDList:
+                                id:container
+
+
+
+
+
+
+<Seat_selection1>:
+        name:"seat_selection1"
+        Image:
+            #C://Users//asus//Documents//appsdevlopment using python//
+                source:"liph.png"
+                allow_stretch:True
+                keep_ratio:False
+        MDLabel:
+                text:"Please Select Seat To Book"
+                color:"#008080"
+                halign:"center"
+                pos_hint:{"center_y":0.9}
+                font_size:"45dp"
+                #pos_hint:{"center_x":0.1,"center_y":0.7}
+        MDFloatLayout:
+                #first row
+                MDIconButton:
+                        id:seat1
+                        name:"seat1"
+                        icon: "seat"
+                        pos_hint:{"center_x":0.1,"center_y":0.7}
+                        on_release:app.time_selection("seat1")
+                MDIconButton:
+                        id:seat2
+                        icon: "seat"
+                        pos_hint:{"center_x":0.17,"center_y":0.7}
+                        on_release:app.time_selection("seat2")
+                MDIconButton:
+                        id:seat3
+                        name:"seat3"
+                        icon: "seat"
+                        pos_hint:{"center_x":0.24,"center_y":0.7}
+                        on_release:app.time_selection("seat3")
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.67}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.67}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.67}
+                MDIconButton:
+                        id:seat7
+                        name:"seat7"
+                        icon: "seat"
+                        pos_hint:{"center_x":0.1,"center_y":0.65}
+                        on_release:app.time_selection("seat7")
+                MDIconButton:
+                        id:seat8
+                        name:"seat8"
+                        icon: "seat"
+                        on_release:app.time_selection("seat8")
+                        pos_hint:{"center_x":0.17,"center_y":0.65}
+                MDIconButton:
+                        id:seat9
+                        name:"seat9"
+                        icon: "seat"
+                        pos_hint:{"center_x":0.24,"center_y":0.65}
+                        on_release:app.time_selection("seat9")
+                MDIconButton:
+                        id:seat4
+                        name:"seat4"
+                        icon: "seat"
+                        on_release:app.time_selection("seat4")
+                        pos_hint:{"center_x":0.6,"center_y":0.7}
+                MDIconButton:
+                        id:seat5
+                        name:"seat5"
+                        icon: "seat"
+                        on_release:app.time_selection("seat5")
+                        pos_hint:{"center_x":0.67,"center_y":0.7}
+                MDIconButton:
+                        id:seat6
+                        name:"seat6"
+                        icon: "seat"
+                        on_release:app.time_selection("seat6")
+                        pos_hint:{"center_x":0.74,"center_y":0.7}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.67}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.67}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.67}
+                MDIconButton:
+                        id:seat10
+                        name:"seat10"
+                        icon: "seat"
+                        on_release:app.time_selection("seat10")
+                        pos_hint:{"center_x":0.6,"center_y":0.65}
+                MDIconButton:
+                        id:seat11
+                        name:"seat11"
+                        icon: "seat"
+                        on_release:app.time_selection("seat11")
+                        pos_hint:{"center_x":0.67,"center_y":0.65}
+                MDIconButton:
+                        id:seat12
+                        name:"seat12"
+                        icon: "seat"
+                        on_release:app.time_selection("seat12")
+                        pos_hint:{"center_x":0.74,"center_y":0.65}
+                #second row
+                MDIconButton:
+                        id:seat13
+                        name:"seat13"
+                        icon: "seat"
+                        on_release:app.time_selection("seat13")
+                        pos_hint:{"center_x":0.1,"center_y":0.6}
+                MDIconButton:
+                        id:seat14
+                        name:"seat14"
+                        icon: "seat"
+                        on_release:app.time_selection("seat14")
+                        pos_hint:{"center_x":0.17,"center_y":0.6}
+                MDIconButton:
+                        id:seat15
+                        name:"seat15"
+                        icon: "seat"
+                        on_release:app.time_selection("seat15")
+                        pos_hint:{"center_x":0.24,"center_y":0.6}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.57}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.57}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.57}
+                MDIconButton:
+                        id:seat19
+                        name:"seat19"
+                        icon: "seat"
+                        on_release:app.time_selection("seat19")
+                        pos_hint:{"center_x":0.1,"center_y":0.55}
+                MDIconButton:
+                        id:seat20
+                        name:"seat20"
+                        icon: "seat"
+                        on_release:app.time_selection("seat20")
+                        pos_hint:{"center_x":0.17,"center_y":0.55}
+                MDIconButton:
+                        id:seat21
+                        name:"seat21"
+                        icon: "seat"
+                        on_release:app.time_selection("seat21")
+                        pos_hint:{"center_x":0.24,"center_y":0.55}
+                MDIconButton:
+                        id:seat16
+                        name:"seat16"
+                        icon: "seat"
+                        on_release:app.time_selection("seat16")
+                        pos_hint:{"center_x":0.6,"center_y":0.6}
+                MDIconButton:
+                        id:seat17
+                        name:"seat17"
+                        icon: "seat"
+                        on_release:app.time_selection("seat17")
+                        pos_hint:{"center_x":0.67,"center_y":0.6}
+                MDIconButton:
+                        id:seat18
+                        name:"seat18"
+                        icon: "seat"
+                        on_release:app.time_selection("seat18")
+                        pos_hint:{"center_x":0.74,"center_y":0.6}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.57}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.57}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.57}
+
+                MDIconButton:
+                        id:seat22
+                        name:"seat22"
+                        icon: "seat"
+                        on_release:app.time_selection("seat22")
+                        pos_hint:{"center_x":0.6,"center_y":0.55}
+                MDIconButton:
+                        id:seat23
+                        name:"seat23"
+                        icon: "seat"
+                        on_release:app.time_selection("seat23")
+                        pos_hint:{"center_x":0.67,"center_y":0.55}
+                MDIconButton:
+                        id:seat24
+                        name:"seat24"
+                        icon: "seat"
+                        on_release:app.time_selection("seat24")
+                        pos_hint:{"center_x":0.74,"center_y":0.55}
+                #third row
+                MDIconButton:
+                        id:seat25
+                        name:"seat25"
+                        icon: "seat"
+                        on_release:app.time_selection("seat25")
+                        pos_hint:{"center_x":0.1,"center_y":0.5}
+                MDIconButton:
+                        id:seat26
+                        name:"seat26"
+                        icon: "seat"
+                        on_release:app.time_selection("seat26")
+                        pos_hint:{"center_x":0.17,"center_y":0.5}
+                MDIconButton:
+                        id:seat27
+                        name:"seat27"
+                        icon: "seat"
+                        on_release:app.time_selection("seat27")
+                        pos_hint:{"center_x":0.24,"center_y":0.5}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.47}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.47}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.47}
+                MDIconButton:
+                        id:seat31
+                        name:"seat31"
+                        icon: "seat"
+                        on_release:app.time_selection("seat31")
+                        pos_hint:{"center_x":0.1,"center_y":0.45}
+                MDIconButton:
+                        id:seat32
+                        name:"seat32"
+                        icon: "seat"
+                        on_release:app.time_selection("seat32")
+                        pos_hint:{"center_x":0.174,"center_y":0.45}
+                MDIconButton:
+                        id:seat33
+                        name:"seat32"
+                        icon: "seat"
+                        on_release:app.time_selection("seat33")
+                        pos_hint:{"center_x":0.24,"center_y":0.45}
+                MDIconButton:
+                        id:seat28
+                        name:"seat28"
+                        icon: "seat"
+                        on_release:app.time_selection("seat28")
+                        pos_hint:{"center_x":0.6,"center_y":0.5}
+                MDIconButton:
+                        id:seat29
+                        name:"seat29"
+                        icon: "seat"
+                        on_release:app.time_selection("seat29")
+                        pos_hint:{"center_x":0.67,"center_y":0.5}
+                MDIconButton:
+                        id:seat30
+                        name:"seat30"
+                        icon: "seat"
+                        on_release:app.time_selection("seat30")
+                        pos_hint:{"center_x":0.74,"center_y":0.5}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.47}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.47}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.47}
+
+                MDIconButton:
+                        id:seat34
+                        name:"seat34"
+                        icon: "seat"
+                        on_release:app.time_selection("seat34")
+                        pos_hint:{"center_x":0.6,"center_y":0.45}
+                MDIconButton:
+                        id:seat35
+                        name:"seat35"
+                        icon: "seat"
+                        on_release:app.time_selection("seat35")
+                        pos_hint:{"center_x":0.67,"center_y":0.45}
+                MDIconButton:
+                        id:seat36
+                        name:"seat36"
+                        icon: "seat"
+                        on_release:app.time_selection("seat36")
+                        pos_hint:{"center_x":0.74,"center_y":0.45}
+                #fourth row
+                MDIconButton:
+                        id:seat37
+                        name:"seat37"
+                        icon: "seat"
+                        on_release:app.time_selection("seat37")
+                        pos_hint:{"center_x":0.1,"center_y":0.4}
+                MDIconButton:
+                        id:seat38
+                        name:"seat38"
+                        icon: "seat"
+                        on_release:app.time_selection("seat38")
+                        pos_hint:{"center_x":0.17,"center_y":0.4}
+                MDIconButton:
+                        id:seat39
+                        name:"seat39"
+                        icon: "seat"
+                        on_release:app.time_selection("seat39")
+                        pos_hint:{"center_x":0.24,"center_y":0.4}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.37}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.37}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.37}
+                MDIconButton:
+                        id:seat43
+                        name:"seat43"
+                        icon: "seat"
+                        on_release:app.time_selection("seat43")
+                        pos_hint:{"center_x":0.1,"center_y":0.35}
+                MDIconButton:
+                        id:seat44
+                        name:"seat44"
+                        icon: "seat"
+                        on_release:app.time_selection("seat44")
+                        pos_hint:{"center_x":0.17,"center_y":0.35}
+                MDIconButton:
+                        id:seat45
+                        name:"seat45"
+                        icon: "seat"
+                        on_release:app.time_selection("seat45")
+                        pos_hint:{"center_x":0.24,"center_y":0.35}
+                MDIconButton:
+                        id:seat40
+                        name:"seat40"
+                        icon: "seat"
+                        on_release:app.time_selection("seat40")
+                        pos_hint:{"center_x":0.6,"center_y":0.4}
+                MDIconButton:
+                        id:seat41
+                        name:"seat41"
+                        icon: "seat"
+                        on_release:app.time_selection("seat41")
+                        pos_hint:{"center_x":0.67,"center_y":0.4}
+                MDIconButton:
+                        id:seat42
+                        name:"seat42"
+                        icon: "seat"
+                        on_release:app.time_selection("seat42")
+                        pos_hint:{"center_x":0.74,"center_y":0.4}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.37}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.37}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.37}
+
+                MDIconButton:
+                        id:seat46
+                        name:"seat46"
+                        icon: "seat"
+                        on_release:app.time_selection("seat46")
+                        pos_hint:{"center_x":0.6,"center_y":0.35}
+                MDIconButton:
+                        id:seat47
+                        name:"seat47"
+                        icon: "seat"
+                        on_release:app.time_selection("seat47")
+                        pos_hint:{"center_x":0.67,"center_y":0.35}
+                MDIconButton:
+                        id:seat48
+                        name:"seat48"
+                        icon: "seat"
+                        on_release:app.time_selection("seat48")
+                        pos_hint:{"center_x":0.74,"center_y":0.35}
+                #fifth row
+                MDIconButton:
+                        id:seat49
+                        name:"seat49"
+                        icon: "seat"
+                        on_release:app.time_selection("seat49")
+                        pos_hint:{"center_x":0.1,"center_y":0.3}
+                MDIconButton:
+                        id:seat50
+                        name:"seat50"
+                        icon: "seat"
+                        on_release:app.time_selection("seat50")
+                        pos_hint:{"center_x":0.17,"center_y":0.3}
+                MDIconButton:
+                        id:seat51
+                        name:"seat51"
+                        icon: "seat"
+                        on_release:app.time_selection("seat51")
+                        pos_hint:{"center_x":0.24,"center_y":0.3}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.27}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.27}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.27}
+                MDIconButton:
+                        id:seat55
+                        name:"seat55"
+                        icon: "seat"
+                        on_release:app.time_selection("seat55")
+                        pos_hint:{"center_x":0.1,"center_y":0.25}
+                MDIconButton:
+                        id:seat56
+                        name:"seat56"
+                        icon: "seat"
+                        on_release:app.time_selection("seat56")
+                        pos_hint:{"center_x":0.17,"center_y":0.25}
+                MDIconButton:
+                        id:seat57
+                        name:"seat57"
+                        icon: "seat"
+                        on_release:app.time_selection("seat57")
+                        pos_hint:{"center_x":0.24,"center_y":0.25}
+                MDIconButton:
+                        id:seat52
+                        name:"seat52"
+                        icon: "seat"
+                        on_release:app.time_selection("seat52")
+                        pos_hint:{"center_x":0.6,"center_y":0.3}
+                MDIconButton:
+                        id:seat53
+                        name:"seat53"
+                        icon: "seat"
+                        on_release:app.time_selection("seat53")
+                        pos_hint:{"center_x":0.67,"center_y":0.3}
+                MDIconButton:
+                        id:seat54
+                        name:"seat54"
+                        icon: "seat"
+                        on_release:app.time_selection("seat54")
+                        pos_hint:{"center_x":0.74,"center_y":0.3}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.27}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.27}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.27}
+
+                MDIconButton:
+                        id:seat58
+                        name:"seat58"
+                        icon: "seat"
+                        on_release:app.time_selection("seat58")
+                        pos_hint:{"center_x":0.6,"center_y":0.25}
+                MDIconButton:
+                        id:seat59
+                        name:"seat59"
+                        icon: "seat"
+                        on_release:app.time_selection("seat59")
+                        pos_hint:{"center_x":0.67,"center_y":0.25}
+                MDIconButton:
+                        id:seat60
+                        name:"seat60"
+                        icon: "seat"
+                        on_release:app.time_selection("seat60")
+                        pos_hint:{"center_x":0.74,"center_y":0.25}
+                #sixth row
+                MDIconButton:
+                        id:seat61
+                        name:"seat61"
+                        icon: "seat"
+                        on_release:app.time_selection("seat61")
+                        pos_hint:{"center_x":0.1,"center_y":0.2}
+                MDIconButton:
+                        id:seat62
+                        name:"seat62"
+                        icon: "seat"
+                        on_release:app.time_selection("seat62")
+                        pos_hint:{"center_x":0.17,"center_y":0.2}
+                MDIconButton:
+                        id:seat63
+                        name:"seat63"
+                        icon: "seat"
+                        on_release:app.time_selection("seat63")
+                        pos_hint:{"center_x":0.24,"center_y":0.2}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.17}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.17}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.17}
+                MDIconButton:
+                        id:seat67
+                        name:"seat67"
+                        icon: "seat"
+                        on_release:app.time_selection("seat67")
+                        pos_hint:{"center_x":0.1,"center_y":0.15}
+                MDIconButton:
+                        id:seat68
+                        name:"seat68"
+                        icon: "seat"
+                        on_release:app.time_selection("seat68")
+                        pos_hint:{"center_x":0.174,"center_y":0.15}
+                MDIconButton:
+                        id:seat69
+                        name:"seat69"
+                        icon: "seat"
+                        on_release:app.time_selection("seat69")
+                        pos_hint:{"center_x":0.24,"center_y":0.15}
+                MDIconButton:
+                        id:seat64
+                        name:"seat64"
+                        icon: "seat"
+                        on_release:app.time_selection("seat64")
+                        pos_hint:{"center_x":0.6,"center_y":0.2}
+                MDIconButton:
+                        id:seat65
+                        name:"seat65"
+                        icon: "seat"
+                        on_release:app.time_selection("seat65")
+                        pos_hint:{"center_x":0.67,"center_y":0.2}
+                MDIconButton:
+                        id:seat66
+                        name:"seat66"
+                        icon: "seat"
+                        on_release:app.time_selection("seat66")
+                        pos_hint:{"center_x":0.74,"center_y":0.2}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.17}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.17}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.17}
+
+                MDIconButton:
+                        id:seat70
+                        name:"seat70"
+                        icon: "seat"
+                        on_release:app.time_selection("seat70")
+                        pos_hint:{"center_x":0.6,"center_y":0.15}
+                MDIconButton:
+                        id:seat71
+                        name:"seat71"
+                        icon: "seat"
+                        on_release:app.time_selection("seat71")
+                        pos_hint:{"center_x":0.67,"center_y":0.15}
+                MDIconButton:
+                        id:seat72
+                        name:"seat72"
+                        icon: "seat"
+                        on_release:app.time_selection("seat72")
+                        pos_hint:{"center_x":0.74,"center_y":0.15}
+                #seventh row
+                MDIconButton:
+                        id:seat73
+                        name:"seat73"
+                        icon: "seat"
+                        on_release:app.time_selection("seat73")
+                        pos_hint:{"center_x":0.1,"center_y":0.1}
+                MDIconButton:
+                        id:seat74
+                        name:"seat74"
+                        icon: "seat"
+                        on_release:app.time_selection("seat74")
+                        pos_hint:{"center_x":0.17,"center_y":0.1}
+                MDIconButton:
+                        id:seat75
+                        name:"seat75"
+                        icon: "seat"
+                        on_release:app.time_selection("seat75")
+                        pos_hint:{"center_x":0.24,"center_y":0.1}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.1,"center_y":0.07}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.17,"center_y":0.07}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.24,"center_y":0.07}
+                MDIconButton:
+                        id:seat79
+                        name:"seat79"
+                        icon: "seat"
+                        on_release:app.time_selection("seat79")
+                        pos_hint:{"center_x":0.1,"center_y":0.05}
+                MDIconButton:
+                        id:seat80
+                        name:"seat80"
+                        icon: "seat"
+                        on_release:app.time_selection("seat80")
+                        pos_hint:{"center_x":0.17,"center_y":0.05}
+                MDIconButton:
+                        id:seat81
+                        name:"seat81"
+                        icon: "seat"
+                        on_release:app.time_selection("seat81")
+                        pos_hint:{"center_x":0.24,"center_y":0.05}
+                MDIconButton:
+                        id:seat76
+                        name:"seat76"
+                        icon: "seat"
+                        on_release:app.time_selection("seat76")
+                        pos_hint:{"center_x":0.6,"center_y":0.1}
+                MDIconButton:
+                        id:seat77
+                        name:"seat77"
+                        icon: "seat"
+                        on_release:app.time_selection("seat77")
+                        pos_hint:{"center_x":0.67,"center_y":0.1}
+                MDIconButton:
+                        id:seat78
+                        name:"seat78"
+                        icon: "seat"
+                        on_release:app.time_selection("seat78")
+                        pos_hint:{"center_x":0.74,"center_y":0.1}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.6,"center_y":0.07}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.67,"center_y":0.07}
+                MDIconButton:
+                        icon: "rectangle"
+                        theme_text_color: "Custom"
+                        text_color: "#A55A5A"
+                        pos_hint:{"center_x":0.74,"center_y":0.07}
+
+                MDIconButton:
+                        id:seat82
+                        name:"seat82"
+                        icon: "seat"
+                        on_release:app.time_selection("seat82")
+                        pos_hint:{"center_x":0.6,"center_y":0.05}
+                MDIconButton:
+                        id:seat83
+                        name:"seat83"
+                        icon: "seat"
+                        on_release:app.time_selection("seat83")
+                        pos_hint:{"center_x":0.67,"center_y":0.05}
+                MDIconButton:
+                        id:seat84
+                        name:"seat84"
+                        icon: "seat"
+                        on_release:app.time_selection("seat84")
+                        pos_hint:{"center_x":0.74,"center_y":0.05}
