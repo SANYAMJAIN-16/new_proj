@@ -118,7 +118,7 @@ class SeatbookerApp(MDApp):
         return self.bldr
 
     def on_start(self):
-        self.connect_to_mongo()
+        self.connect_to_mongo()# please give your mangodb atlas string 
         for i in range(1, 4):
             self.bldr.get_screen("hall_selection").ids.container.add_widget(
                 OneLineListItem(
@@ -129,7 +129,7 @@ class SeatbookerApp(MDApp):
 
     def connect_to_mongo(self):
         try:
-            self.client = MongoClient('mongodb+srv://sanyamjain20022:6KmDEhLVdCRY2Ash@sanyam.kmlm2fh.mongodb.net/')
+            self.client = MongoClient('')
             self.client.admin.command('ismaster')
             self.db = self.client['user_detail']
             self.collection = self.db['library_details']
